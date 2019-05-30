@@ -1,3 +1,22 @@
-<form action="/result" method="get">
-    Wpisz zapytanie tutaj: <input type="text" name="dlogQuery">
-</form>
+<div class="container">
+    <form action="/result" method="get">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Wpisz zapytanie tutaj:</span>
+            </div>
+            <input type="text" class="form-control" name="dlogQuery" id="basic-url" aria-describedby="basic-addon3">
+            <div class="input-group-append">
+                <input type="submit" class="btn btn-outline-secondary" value="Wyślij">
+            </div>
+        </div>
+    </form>
+
+    <form action="uploadfile" method="POST" enctype="multipart/form-data">
+        <div class="file-field">
+            <div class="btn btn-primary btn-sm float-left">
+                <input type="file" name="fileToUpload">
+            </div>
+            <input type="submit" class="btn" value="Wyślij">
+        </div>
+    </form>
+</div>
