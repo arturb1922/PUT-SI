@@ -6,7 +6,11 @@ var router = express.Router();
 swipl.call('working_directory(_,routes)');
 
 router.get('/', function (req, res) {
-  res.render('index');
+  let fileNameList = [];
+  fs.readdirSync('./prolog_db').forEach(file => {
+    fileNameList.push(file);
+  });
+  res.render('index', {files: fileNameList});
 });
 
 router.get('/result', function (req, res) {
@@ -19,16 +23,18 @@ router.get('/result', function (req, res) {
     swipl.call(`consult(\'${fileName}\')`);
   });
 
-
   // let fileName1 = 'prolog_db/exmp01.pl';
   // let fileName2 = 'prolog_db/exmp02.pl';
 
   // swipl.call(`consult(\'${fileName1}\')`);
   // swipl.call(`consult(\'${fileName2}\')`);
-
   let result = swipl.call(userInput);
 
-  res.render('result', { title: result.X });
+  res.render('result', { X: result.X, Y: result.Y });
+});
+
+router.get('/retract', (req, res) => {
+
 });
 
 
