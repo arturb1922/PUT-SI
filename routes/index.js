@@ -33,9 +33,4 @@ router.get('/result', function (req, res) {
   res.render('result', { X: result.X, Y: result.Y });
 });
 
-router.get('/retract', (req, res) => {
-
-});
-
-
 module.exports = router;
